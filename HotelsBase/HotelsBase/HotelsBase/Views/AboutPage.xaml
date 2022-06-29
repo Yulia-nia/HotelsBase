@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="HotelsBase.Views.AboutPage"
+             xmlns:vm="clr-namespace:HotelsBase.ViewModels"
+             Title="O приложении">
+
+    <ContentPage.BindingContext>
+        <vm:AboutViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Primary">#FE6960</Color>
+            <Color x:Key="Accent">#FE6960</Color>
+            <Color x:Key="LightTextColor">#999999</Color>
+            
+            <Style x:Key="IconFrame" TargetType="Frame">
+                <Setter Property="Padding" Value="2"/>
+                <Setter Property="BackgroundColor" Value="#00000000"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    
+    <StackLayout Margin="8" Padding="16" Spacing="16">
+
+        <Frame HeightRequest="250">
+            <Image Source="visage1.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+        </Frame>
+
+        <Label
+            Text="This app is created as an assignment for a course at the Belarusian State University of Informatics and Radioelectronics."
+            FontSize="16"
+            VerticalOptions="Start"
+            HorizontalOptions="CenterAndExpand"
+            HorizontalTextAlignment="Center"/>
+        
+        <StackLayout>
+            <Label
+            FontSize="12"
+            VerticalOptions="StartAndExpand"
+            HorizontalOptions="StartAndExpand"
+            HorizontalTextAlignment="Center"            
+            Text="Created using Xamarin.Forms"/>
+        </StackLayout>
+        <StackLayout>
+            <Label
+             FontSize="12"
+             VerticalOptions="StartAndExpand"
+             HorizontalOptions="StartAndExpand"
+             HorizontalTextAlignment="Center"
+             Text="Made for the Faculty of Computer Systems and Networks"/>
+        </StackLayout>
+        <Label
+            Text="Visage 2.0"
+            FontSize="12"
+            VerticalOptions="End"
+            HorizontalOptions="CenterAndExpand"
+            HorizontalTextAlignment="Center"/>
+        <Label
+            Text="© Netetskaya Yulia 2019"
+            FontSize="8"
+            VerticalOptions="End"
+            HorizontalOptions="CenterAndExpand"
+            HorizontalTextAlignment="Center"/>
+    </StackLayout>
+</ContentPage>

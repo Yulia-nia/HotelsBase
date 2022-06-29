@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"             
+             mc:Ignorable="d"
+             x:Class="HotelsBase.Views.RoomPage"
+             xmlns:local="clr-namespace:HotelsBase"
+             Title="{local:Translate Rooms}">
+    
+
+    <ContentPage.Content>        
+        <StackLayout >
+            <ListView x:Name="MyListView"
+            ItemsSource="{Binding Rooms}"          
+            CachingStrategy="RecycleElement"  
+            VerticalOptions="FillAndExpand" 
+            Margin="10"                     
+            HasUnevenRows="true"             
+            IsPullToRefreshEnabled="true"
+            ItemSelected="OnItemSelected"
+            SeparatorColor="#71bcf7"  
+            BackgroundColor="Transparent"
+            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+            RefreshCommand="{Binding LoadItemsCommand}">
+                    <!--SelectedItem="{Binding SelectedFriend;, Mode=TwoWay}"-->
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition  Width="*"/>
+                                        <ColumnDefinition  Width="*"/>
+                                        <ColumnDefinition  Width="*"/>
+                                        <ColumnDefinition  Width="*"/>
+                                        <ColumnDefinition  Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="50"/>
+                                        <RowDefinition Height="60"/>
+
+                                        <RowDefinition Height="60"/>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="10"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Text="{Binding Name}" TextColor="Black" FontSize="Medium" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5"  HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+                                    <Image  Source="{Binding Foto}" Grid.Column="0" Grid.Row="1" Grid.RowSpan="3" Grid.ColumnSpan="3"/>
+                                    <Label Text="{Binding Coast}"  TextColor="Black" FontSize="Medium" Grid.Column="3" Grid.Row="1" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+                                    <Image Source="money.png" Grid.Column="4" Grid.Row="1" HeightRequest="30" WidthRequest="30" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+
+                                    <Label Text="{Binding NumbersOfBeds}"  TextColor="Black" FontSize="Medium" Grid.Column="3" Grid.Row="2"  HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+                                    <Image Source="bed.png" HeightRequest="30" WidthRequest="30" Grid.Column="4" Grid.Row="2" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

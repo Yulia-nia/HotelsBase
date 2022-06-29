@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"             
+             mc:Ignorable="d"            
+             x:Class="HotelsBase.Views.ItemsPage"
+             x:Name="BrowseItemsPage"    
+              xmlns:local="clr-namespace:HotelsBase"
+             xmlns:c="clr-namespace:HotelsBase.Services">
+
+    <!--<ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Primary">#FE6960</Color>
+            <Color x:Key="Accent">#FE6960</Color>
+            <Color x:Key="LightTextColor">#999999</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>-->
+
+    <Shell.SearchHandler>
+        <c:HotelSearchHandler Placeholder="{local:Translate Seach}" ShowsResults="true"                             
+                              SearchBoxVisibility="Expanded" DisplayMemberName="Name">
+            <!--SearchBoxVisibility="Collapsible"-->
+            <c:HotelSearchHandler.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.15*" />
+                            <ColumnDefinition Width="0.85*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Source="{Binding Foto}"
+                               Aspect="AspectFill"
+                               HeightRequest="40"
+                               WidthRequest="40" />
+                        <Label Grid.Column="1"
+                               Text="{Binding Name}"
+                               FontAttributes="Bold" />
+                    </Grid>
+                </DataTemplate>
+            </c:HotelSearchHandler.ItemTemplate>
+        </c:HotelSearchHandler>
+    </Shell.SearchHandler>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <!--<Frame HeightRequest="80" BackgroundColor="#71bcf70" 
+                   BorderColor="#2196F3 ">
+                <Button Text="Сортировка отелей"
+                    FontSize="Medium" HeightRequest="75" 
+                    HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                    Clicked="Button_Clicked"
+                    BackgroundColor="Transparent"
+                    BorderColor="#2196F3"/>
+            </Frame>-->
+            <ListView x:Name="HotelsListView"
+                ItemsSource="{Binding Hotels}"
+                VerticalOptions="FillAndExpand"
+                HasUnevenRows="true"
+                RefreshCommand="{Binding LoadItemsCommand}"
+                IsPullToRefreshEnabled="true"
+                SelectedItem="{Binding SelectedFriend, Mode=TwoWay}"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                CachingStrategy="RecycleElement" 
+                Margin="10"
+                RefreshControlColor="#2196F3"
+                SeparatorColor="#2196F3 ">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Вверх"
+                                          Command="{Binding Path=ListViewModel.MoveToTopCommand}" CommandParameter="{Binding}" />
+                                <MenuItem Text="Вниз"
+                                          Command="{Binding Path=ListViewModel.MoveToBottomCommand}" CommandParameter="{Binding}" />
+                                <MenuItem Text="Удалить"
+                                          Command="{Binding Path=ListViewModel.RemoveCommand}" CommandParameter="{Binding}" />
+                            </ViewCell.ContextActions>
+                            <ViewCell.View>
+                                <StackLayout  Orientation="Vertical" >
+                                    <Image  Source="{Binding Foto}"  HeightRequest="200"
+                                        HorizontalOptions="FillAndExpand" Aspect="AspectFill">
+                                        <Image.GestureRecognizers>
+                                            <PinchGestureRecognizer/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <StackLayout Padding="10">
+                                        <Label Text="{Binding Name}" FontSize="Large" TextColor="Black"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

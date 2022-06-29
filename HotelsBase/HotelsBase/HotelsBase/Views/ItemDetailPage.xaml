@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="HotelsBase.Views.ItemDetailPage"
+             xmlns:local="clr-namespace:HotelsBase"
+             Title="{local:Translate Review}"> 
+
+    <ContentPage.Content>
+               
+        <StackLayout x:Name="ReviewStack" Padding="5">
+            <Label Text=" " FontSize="Medium"/>
+            <Button Text="{local:Translate AddNewReview}" BackgroundColor="#71bcf7" 
+                    FontSize="Medium" HeightRequest="60" WidthRequest="300"
+                    HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                    Clicked="AddItem_Clicked"/>            
+            <ScrollView>
+
+            <ListView x:Name="MyReview"
+            ItemsSource="{Binding Reviews}"          
+            CachingStrategy="RecycleElement"  
+            VerticalOptions="FillAndExpand" 
+            Margin="10"                    
+            HasUnevenRows="true"             
+            IsPullToRefreshEnabled="true"
+            SelectedItem="{Binding SelectedFriend, Mode=TwoWay}"
+            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                       SeparatorColor="#71bcf7">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition  Width="90"/>
+                                            <ColumnDefinition  Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="50"/>
+                                            <RowDefinition Height="30"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="20"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Image  Source="{Binding Foto}" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"/>
+                                        <StackLayout  Orientation="Horizontal" Grid.Column="1" Grid.Row="0">
+                                            <Image Source="men.png" HorizontalOptions="Start"
+                                                   VerticalOptions="Center"
+                                                   WidthRequest="30"/>
+                                            <Label Text="{Binding Name}"  
+                                                   FontSize="Medium" 
+                                                   HorizontalOptions="StartAndExpand" 
+                                                   VerticalOptions="Center"
+                                                   TextColor="Black"/>
+                                        </StackLayout>
+
+                                        <StackLayout  Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
+                                            <Image Source="star.png" 
+                                                   HorizontalOptions="Start"
+                                                   VerticalOptions="Start"
+                                                   WidthRequest="30"/>
+
+                                            <Label Text="{Binding Stars}"  
+                                                   FontSize="Medium"  
+                                                   HorizontalOptions="Start" 
+                                                   VerticalOptions="Start"
+                                                   TextColor="Black"/>
+                                            <Label Text="\ 10"
+                                                   FontSize="Medium"  
+                                                   HorizontalOptions="StartAndExpand" 
+                                                   VerticalOptions="Start"
+                                                   TextColor="Black"/>
+                                        </StackLayout>
+                                        <!--<Label Text="{Binding Name}"  FontSize="Medium" Grid.Column="1" Grid.Row="0" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>-->
+                                        <!--<Label Text="{Binding Stars}"  FontSize="Medium"  HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>-->
+                                        <Label Text="{Binding YourReview}" TextColor="Black"  FontSize="Medium" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+
+                                    </Grid>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+                 

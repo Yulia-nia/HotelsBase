@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:HotelsBase"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             x:Class="HotelsBase.Views.OfferDetailPage"
+             Title="{local:Translate Rental}" >
+    
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame  HeightRequest="250" OutlineColor = "#2196F3 ">
+                <Image
+                    Source="{Binding Foto}"
+                    HorizontalOptions="FillAndExpand"
+                        Aspect="AspectFill" />
+            </Frame>
+
+            <ScrollView>
+                <StackLayout>
+                    <Frame HeightRequest="55" BackgroundColor="#71bcf7" 
+                  >
+
+                        <StackLayout Orientation="Horizontal" Padding="5">
+                            <Image Source="money.png"                                                     
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           WidthRequest="35"
+                           />
+                            <Label Text="{Binding Coast}" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Medium"/>
+                            <Label Text="{local:Translate Rub}"   TextColor="Black"
+                               VerticalOptions="Center"  HorizontalOptions="FillAndExpand" FontSize="Medium"/>
+                            <!--перевости в доллары???-->
+                        </StackLayout>
+                    </Frame>
+
+
+
+                    <Frame>
+                        <StackLayout Orientation="Horizontal" Padding="5">
+                            <Label FontSize="Medium" 
+                           Text="{local:Translate Type}"                          
+                           HorizontalOptions="Start"
+                           VerticalOptions="Center"
+                                   TextColor="Black"                                  
+                           />
+                            <Label Text="{Binding LeaseTtype}" TextColor="#71bcf7" HorizontalOptions="FillAndExpand" FontSize="Medium"/>
+                        </StackLayout>
+                    </Frame>
+                    <!--линия-->
+
+                    <Frame  >
+                        <StackLayout Orientation="Vertical" Padding="5">
+                            <Label Text="{Binding FIO}" HorizontalOptions="StartAndExpand" FontSize="Medium"
+                                   TextColor="#71bcf7"/>
+                            <StackLayout Orientation="Horizontal">
+                                <Image Source="phone.png"                                                     
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           WidthRequest="35"/>
+                                <Button x:Name="phoneNumber" 
+                                        TextColor="#71bcf7"
+                                     Text="{Binding Number}"
+                                    HorizontalOptions="StartAndExpand" FontSize="Medium"
+                                    BackgroundColor="Transparent"
+                                    BorderColor="#FE6960"
+                                    Clicked="Button_Clicked"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame >
+                        <StackLayout Orientation="Vertical" Padding="5">
+                            <Label Text="{Binding Information}" VerticalOptions="Center" TextColor="Black"
+                                   HorizontalOptions="CenterAndExpand" FontSize="Medium"/>
+                        </StackLayout>
+                    </Frame>
+
+
+
+                    <Frame >
+
+                        <StackLayout HorizontalOptions="CenterAndExpand"  Orientation="Horizontal" Padding="5">
+                            <Image Source="map.png"                                                     
+                           HorizontalOptions="Start"
+                           VerticalOptions="Center"
+                           WidthRequest="40"/>
+                            <Label Text="{Binding Street}" TextColor="Black"
+                           HorizontalOptions="StartAndExpand" VerticalOptions="Center" FontSize="20" />
+                        </StackLayout>
+                    </Frame>
+
+                    <!--<Label Text=" " FontSize="Medium"/>-->
+                    <!--Тип сдачи-->
+                    <!--<Label Text="{Binding Coast}" HorizontalOptions="StartAndExpand" FontSize="Medium"/>-->
+                    <!--<Label Text=" " FontSize="Medium"/>-->
+                    <!--<Label Text="{Binding FIO}" HorizontalOptions="CenterAndExpand" FontSize="Medium"/>-->
+                    <!--<Label x:Name="phoneNumber" Text="{Binding Number}" HorizontalOptions="CenterAndExpand" FontSize="Medium"/>
+                    <Button Text="Call" HorizontalOptions="Center" Clicked="Button_Clicked" FontSize="Medium"/>
+                    <Label Text=" " FontSize="Medium"/>-->
+                    <!--<Label Text="{Binding Information}" HorizontalOptions="FillAndExpand" FontSize="Medium"/>-->
+                    <!--<StackLayout>
+                        <Frame HeightRequest="80">
+                            <Button ImageSource="https://mondrian.mashable.com/2013%252F05%252F09%252Fb8%252Fgooglemapsn.6a211.jpg%252F1200x627.jpg?signature=4qgHZ58CzYDkVfTSM0pVkT_s5kU="
+                                  Clicked="Button_Clicked_1"  />
+                        </Frame>
+                    </StackLayout>-->
+
+                    <StackLayout VerticalOptions="StartAndExpand" Padding="30">
+                        <Button Text="карта" Clicked="Button_Clicked_1"/>
+                        <maps:Map MapType ="Street"
+                                  HeightRequest="250"
+                                  WidthRequest="1000"
+                                  VerticalOptions = "LayoutOptions.FillAndExpand">
+                            <maps:Map.ItemTemplate>
+                                <DataTemplate>
+                                    <maps:Pin Address="г. Минск, ул. Крупской 8"                                    
+                                              Label="Name" />
+                                </DataTemplate>
+                            </maps:Map.ItemTemplate>
+                        </maps:Map>
+                    </StackLayout>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+
+                            <ColumnDefinition  Width="*"/>
+                            <ColumnDefinition  Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                        </Grid.RowDefinitions>
+
+                        <ImageButton Grid.Column="0"
+                            Grid.Row="0"
+                            HeightRequest="40"
+                            WidthRequest="70"
+                            Source="recycling.png"                            
+                            BackgroundColor="Transparent"
+                            BorderColor="#FE6960"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="Center"
+                            Clicked="OnDeleteClicked" />
+
+                        <ImageButton Grid.Column="1"
+                            Grid.Row="0"                           
+                            HeightRequest="40"
+                            WidthRequest="70"
+                            Source="home.png"                           
+                            BackgroundColor="Transparent"
+                            BorderColor="#FE6960"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="Center"
+                            Clicked="OnCancelClicked" />
+
+                        <!--<Label Text="Save" Grid.Column="0" Grid.Row="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>-->
+                        <Label Text="{local:Translate Delete}" Grid.Column="0" Grid.Row="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
+                        <Label Text="{local:Translate Cancel}" Grid.Column="1" Grid.Row="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
+                    </Grid>
+
+
+
+                    <!--<StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">                      
+                        <Button Text="Delete" Clicked="OnDeleteClicked" />                        
+                    </StackLayout>-->
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

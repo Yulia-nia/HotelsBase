@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             mc:Ignorable="d"
+             x:Class="HotelsBase.Views.GoogleMapPage">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="StartAndExpand" Padding="30">
+
+
+            <maps:Map MapType ="Street"
+                      HeightRequest="250"
+                      WidthRequest="900"
+                      VerticalOptions = "LayoutOptions.FillAndExpand"
+                      
+                >
+             <maps:Map.ItemTemplate>
+                    <DataTemplate>
+                        <maps:Pin Address="г. Минск, ул. Крупской 8"
+                              Label="Name" />
+                    </DataTemplate>
+                </maps:Map.ItemTemplate>
+            </maps:Map>
+        </StackLayout>
+    </ContentPage.Content>            <!--<maps:Map x:Name="MyMap"
+                  WidthRequest="320"
+                  HeightRequest="200"                  
+                  IsShowingUser="true"
+                  MapType="Hybrid"/>-->
+
+            <!--<maps:Map x:Name="MyMap"
+                      WidthRequest="320"
+                  HeightRequest="200"                  
+                  IsShowingUser="true"
+                  ItemsSource="{Binding Offers}">
+                --><!-- Alternatively, set ItemTemplateSelector to MapItemTemplateSelector --><!--
+                <maps:Map.ItemTemplate>
+                    <DataTemplate>
+                        <maps:Pin Address="{Binding Street}"
+                              Label="{Binding Information}" />
+                    </DataTemplate>
+                </maps:Map.ItemTemplate>
+            </maps:Map>-->
+</ContentPage>

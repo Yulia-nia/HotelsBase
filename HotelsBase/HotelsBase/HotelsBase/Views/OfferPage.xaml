@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="HotelsBase.Views.OfferPage"
+             
+           
+             
+             Title="Добавьте свое предложение">
+
+    <!--xmlns:local="clr-namespace:HotelsBase"
+             Title="{local:Translate HotelSort}"-->
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <StackLayout x:Name="friendStack" Padding="15">
+                    <Label Text="" FontSize="Small"/>                    
+                    <Label Text="Ваше имя"/>                    
+                    <Entry Text="{Binding FIO}" 
+                           FontSize="Medium" 
+                           IsSpellCheckEnabled="false" 
+                           Placeholder="Введите имя" 
+                           BackgroundColor="White"/>
+                    <Label Text="" FontSize="Small"/>
+                    
+                    <Label Text="Контактный номер телефона"/>                    
+                    <Entry x:Name="phoneNumberEntry" 
+                           Text="{Binding Number}" 
+                           FontSize="Medium" 
+                           Keyboard="Telephone" 
+                           Placeholder="Введите контактный номер телефона"/>
+                    <Label Text="" FontSize="Small"/>
+
+                    <Label Text="Полный адрес"/>                    
+                    <Entry Text="{Binding Street}" 
+                           FontSize="Medium" 
+                           Placeholder="Введите город, улица, дом"/>
+                    <Label Text="" FontSize="Small"/>
+
+                    <Label Text="Выберите тип сдачи"/>                    
+                    <Picker x:Name="pickerType" ItemsSource="{Binding LeaseTtype}"
+                        SelectedIndexChanged="picker_SelectedIndexChanged">
+                        <!--ItemsSource="{Binding LeaseTtype}">-->
+                        <Picker.Items>
+                            <x:String>Комната</x:String>
+                            <x:String>Квартира</x:String>
+                            <x:String>Дом</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <!--сделать выпадающий список-->
+                    <Entry x:Name="entryType" 
+                           Text="{Binding LeaseTtype}" 
+                           TextChanged="Entry_TextChanged" 
+                           FontSize="Medium"/>                    
+                    <Label Text="" FontSize="Small"/>
+                    
+                    <Label Text="Укажите стоимость"/>
+                    <Entry Text="{Binding Coast}" 
+                           FontSize="Medium" 
+                           Placeholder="Введите стоимость" 
+                           Keyboard="Numeric"/>
+                    <Label Text="" FontSize="Small"/>
+
+                    <Label Text="Информация"/>                   
+                    <Entry Text="{Binding Information}" 
+                           FontSize="Medium" 
+                           IsSpellCheckEnabled="True" 
+                           HeightRequest="200" 
+                           Placeholder="Введите информацию"/>
+                    <Label Text="" FontSize="Small"/>
+
+                    <Label Text="Добавьте фото"/>                    
+                    <Entry x:Name="entryPhoto" Text="г" 
+                           FontSize="Medium" 
+                           Placeholder="Добавьте фото"/>
+                    <!--если нет фото-->
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Если нет фотографии: "/>
+                        <Switch IsToggled="False" HorizontalOptions="FillAndExpand" Toggled="Switch_Toggled" />
+                    </StackLayout>
+                    <Button Text="Pick Photo" Clicked="OnPickPhotoButtonClicked" />
+                    <!--<Button Text="Take Photo"
+        Clicked="Button_Clicked" />-->
+                    
+                    <Frame HorizontalOptions="EndAndExpand" HeightRequest="100" WidthRequest="100">
+                        <Image x:Name="image" Source="{Binding Foto}"/>
+                    </Frame>
+                </StackLayout>
+
+                <Label Text="" FontSize="Large"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition  Width="*"/>
+                        <ColumnDefinition  Width="*"/>
+                        <ColumnDefinition  Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
+
+                    
+                    <ImageButton Grid.Column="0"
+                            Grid.Row="0"
+                            HeightRequest="40"
+                            WidthRequest="70"
+                            Source="save.png"                            
+                            BackgroundColor="Transparent"
+                            BorderColor="#FE6960"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="Center"                            
+                            Clicked="OnSaveClicked"/>
+
+
+                    <ImageButton Grid.Column="1"
+                            Grid.Row="0"
+                            HeightRequest="40"
+                            WidthRequest="70"
+                            Source="recycling.png"                            
+                            BackgroundColor="Transparent"
+                            BorderColor="#FE6960"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="Center"
+                            Clicked="OnDeleteClicked" />
+
+                    <ImageButton Grid.Column="2"
+                            Grid.Row="0"                           
+                            HeightRequest="40"
+                            WidthRequest="70"
+                            Source="home.png"                           
+                            BackgroundColor="Transparent"
+                            BorderColor="#FE6960"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="Center"
+                            Clicked="OnCancelClicked" />
+                    
+                    <Label Text="Save" Grid.Column="0" Grid.Row="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
+                    <Label Text="Delete" Grid.Column="1" Grid.Row="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
+                    <Label Text="Cancel" Grid.Column="2" Grid.Row="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
+                </Grid>
+                <!--<Button Text="Позвонить" Clicked="Button_Clicked"/>-->
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="HotelsBase.Views.MainPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50%"/>
+                    <RowDefinition Height="50%" />
+                </Grid.RowDefinitions>                  
+                
+            <Button Text="Отели" BackgroundColor="Aqua"
+                   VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" Grid.Row="0" Clicked="Button_ClickedAsync" />
+            <Button Text="Предложения от ИП" BackgroundColor="Azure"
+                   VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" Grid.Row="1" Clicked="Button_Clicked1Async1"/>   
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

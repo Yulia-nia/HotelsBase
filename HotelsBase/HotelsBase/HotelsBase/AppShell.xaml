@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms" 
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+       mc:Ignorable="d"
+       xmlns:local="clr-namespace:HotelsBase.Views"
+       Title="HotelsBase"
+        xmlns:local1="clr-namespace:HotelsBase"
+       x:Class="HotelsBase.AppShell">
+
+    
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Color x:Key="NavigationPrimary">#2196F3</Color>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.BackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="Shell.ForegroundColor" Value="White" />
+                
+                
+                <Setter Property="Shell.TitleColor" Value="White" />
+                <Setter Property="Shell.DisabledColor" Value="#dc143c" />
+                <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="#2196F3" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="White"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="White"/>
+            </Style>
+            <Style TargetType="ShellItem" BasedOn="{StaticResource BaseStyle}" />
+            
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    <!--<TabBar>
+        <Tab Title="Отели" Icon="tab_feed.png">
+            <ShellContent ContentTemplate="{DataTemplate local:ItemsPage}" />
+        </Tab>
+        <Tab Title="Хостелы" Icon="tab_about.png">
+            <ShellContent ContentTemplate="{DataTemplate local:HostelsViewPage}" />
+        </Tab>
+        <Tab Title="About" Icon="tab_about.png">
+            <ShellContent ContentTemplate="{DataTemplate local:AboutPage}" />
+        </Tab>
+    </TabBar>-->
+
+    <!-- Your Pages -->
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <Grid 
+              HeightRequest="200">
+                <Image Aspect="AspectFill"
+                   Source="visage1.png"/>  
+            </Grid>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+
+    <FlyoutItem Title="{local1:Translate HotelСatalog}" FlyoutIcon="hotel.png">
+        <Tab Title="{local1:Translate HotelСatalog}" Icon="hotel.png">
+            <ShellContent ContentTemplate="{DataTemplate local:ItemsPage}" />
+        </Tab>
+        <!--ContentTemplate="{DataTemplate local:ItemsPage}"-->
+    </FlyoutItem>
+
+    <FlyoutItem Title="{local1:Translate Rental}" FlyoutIcon="home.png">
+        <Tab Title="{local1:Translate Rental}" Icon="home.png">
+            <ShellContent ContentTemplate="{DataTemplate local:HostelsViewPage}"
+                          />
+        </Tab>
+    </FlyoutItem>
+
+    <!--<FlyoutItem Title="Избранное" FlyoutIcon="star.png">
+        <Tab Title="Избранное" Icon="star.png">
+            <ShellContent ContentTemplate="{DataTemplate local:FavoritePage}"
+                          />
+        </Tab>
+    </FlyoutItem>-->
+
+    <!--_______________________-->
+
+    <FlyoutItem Title="Сортировка отелей" FlyoutIcon="home.png">
+        <Tab Title="Сортировка отелей" Icon="home.png">
+            <ShellContent ContentTemplate="{DataTemplate local:SortPage}"
+                          />
+        </Tab>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Статистика" FlyoutIcon="home.png">
+        <Tab Title="Статистика" Icon="home.png">
+            <ShellContent ContentTemplate="{DataTemplate local:StartPage}"
+                          />
+        </Tab>
+    </FlyoutItem>
+    
+    <!--_______________________-->
+    
+    
+
+    <FlyoutItem FlyoutIcon="settings.png" Title="{local1:Translate Settings}">
+        <Tab Title="Настройки" Icon="settings.png">
+            <ShellContent ContentTemplate="{DataTemplate local:SettingPage}" />
+        </Tab>
+    </FlyoutItem>
+
+    <FlyoutItem FlyoutIcon="tab_about.png" Title="{local1:Translate About}">
+            
+        <Tab Title="О приложении" Icon="tab_about.png">
+            <ShellContent ContentTemplate="{DataTemplate local:AboutPage}" />
+        </Tab>
+    </FlyoutItem>
+    <!-- Optional Templates 
+    // These may be provided inline as below or as separate classes.
+
+    // This header appears at the top of the Flyout.
+    <Shell.FlyoutHeaderTemplate>
+	<DataTemplate>
+            <Grid>ContentHere</Grid>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+
+    // ItemTemplate is for ShellItems as displayed in a Flyout
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <ContentView>
+                Bindable Properties: Title, Icon
+            </ContentView>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    // MenuItemTemplate is for MenuItems as displayed in a Flyout
+    <Shell.MenuItemTemplate>
+        <DataTemplate>
+            <ContentView>
+                Bindable Properties: Text, Icon
+            </ContentView>
+        </DataTemplate>
+    </Shell.MenuItemTemplate>
+
+    -->
+
+</Shell>

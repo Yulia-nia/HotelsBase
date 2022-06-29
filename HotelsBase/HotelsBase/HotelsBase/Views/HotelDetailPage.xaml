@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:HotelsBase"
+             mc:Ignorable="d"
+             x:Class="HotelsBase.Views.HotelDetailPage"              
+             Title="{local:Translate Hotel}">
+
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame  HeightRequest="255" OutlineColor = "#71bcf7">
+                <Image x:Name="image"
+                    Source="{Binding Foto}"
+                    HorizontalOptions="FillAndExpand"
+                    Aspect="AspectFill"/>
+            </Frame>
+            <ScrollView>
+                <StackLayout Padding="5">
+                    <local:AnimatedText Text="{Binding Name}"  x:Name="AnimatedTextControl"                             
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center">
+                        <local:AnimatedText.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Button_OnClicked"/>
+                        </local:AnimatedText.GestureRecognizers>
+                    </local:AnimatedText>
+
+
+                    <Label Text="{Binding StrStars}"  TextColor="#FEB860" FontSize="Large" HorizontalOptions="CenterAndExpand"/>
+                    <Label Text=" " FontSize="Large"/>
+                        <!--<Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition  Width="*"/>
+                                <ColumnDefinition  Width="*"/>                                
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="60"/>
+                                <RowDefinition Height="60"/>
+                        </Grid.RowDefinitions>
+
+                        <Button Grid.Column="1" Grid.Row="0" 
+                                BackgroundColor="#71bcf7" 
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                Text="{local:Translate Speak}" Clicked="OnSpeakClicked" />
+
+                        <Button Grid.Column="0" Grid.Row="0"
+                            x:Name="RunButton" 
+                            BackgroundColor="#71bcf7" 
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand"
+                                
+                            Text="{local:Translate AnimationText}" Clicked="Button_OnClicked"/>
+
+                        <Button Grid.Column="0" Grid.Row="1"
+                                x:Name="startButton"
+                                BackgroundColor="#71bcf7"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                Text="{local:Translate StastAnimation}"
+                                
+                                Clicked="OnStartAnimationButtonClicked"/>
+                        <Button x:Name="cancelButton"
+                                Grid.Column="1" Grid.Row="1"
+                                BackgroundColor="#71bcf7"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                Text="{local:Translate CencelAnimation}" Clicked="OnCancelAnimationButtonClicked" IsEnabled="false" />
+                    </Grid>
+                    
+                    <Label Text=" " FontSize="Large"/>-->
+
+                    <Label Text="{local:Translate Contacts}" TextColor="Black" HorizontalOptions="CenterAndExpand" FontSize="Large"/>
+
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="map.png"                                                     
+                           HorizontalOptions="Start"
+                           VerticalOptions="Center"
+                           WidthRequest="30"/>
+                        <Button
+                                HeightRequest="37"
+                                Text="{Binding Contacts.Address}"
+                                BackgroundColor="Transparent"
+                                BorderColor="Transparent"
+                                HorizontalOptions="StartAndExpand"  
+                                VerticalOptions="Center"/>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="phone.png"                                                     
+                           HorizontalOptions="Start"
+                           VerticalOptions="Center"
+                           WidthRequest="30"/>
+                        <Button x:Name="phoneNumberEntry" 
+                                HeightRequest="37"
+                                Text="{Binding Contacts.Telephone}"                                 
+                                Clicked="Button_Clicked" 
+                                BackgroundColor="Transparent"
+                                BorderColor="Transparent"
+                                HorizontalOptions="StartAndExpand"  
+                                VerticalOptions="Center"                                
+                                />
+                    </StackLayout>
+
+                    
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="email.png"                                                     
+                           HorizontalOptions="Start"
+                           VerticalOptions="Center"
+                           WidthRequest="30"/>
+                        <Button x:Name="Button_email" 
+                                HeightRequest="37"                               
+                                Text="{Binding Contacts.Email}"                                 
+                                BackgroundColor="Transparent"
+                                BorderColor="Transparent"
+                                HorizontalOptions="StartAndExpand"  
+                                VerticalOptions="Center"                                
+                                Clicked="Button_Clicked_1"/>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="net.png"                                                     
+                           HorizontalOptions="Start"
+                           VerticalOptions="Center"
+                           WidthRequest="30"/>
+                        <Button x:Name="Button_web" 
+                                HeightRequest="38"
+                                Text="{Binding Contacts.OfficialWebsite}"                                 
+                                BackgroundColor="Transparent"
+                                BorderColor="Transparent"
+                                HorizontalOptions="StartAndExpand"  
+                                VerticalOptions="Center"                                
+                                Clicked="Button_Clicked_2"/>
+                    </StackLayout>
+                    
+                    <Label Text=" " FontSize="Large"/>
+
+                    <Label Text="{local:Translate Services}" HorizontalOptions="CenterAndExpand" FontSize="Large" TextColor="Black"/>
+
+                    <StackLayout Orientation="Horizontal" Padding="1">
+                        <Image Source="wif.png"                                                     
+                           HorizontalOptions="Center"
+                           VerticalOptions="Start"
+                           WidthRequest="30"/>
+                        <Label Text="{Binding Services.Internet}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" FontSize="Small"/>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" Padding="1">
+                        <Image Source="lunch.png"                                                     
+                           HorizontalOptions="Center"
+                           VerticalOptions="Start"
+                           WidthRequest="30"/>
+                        <Label Text="{Binding Services.Nutrition}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" FontSize="Small"/>
+                    </StackLayout>
+                    
+                    <StackLayout Orientation="Horizontal" Padding="1">
+                        <Image Source="bars.png"                                                     
+                           HorizontalOptions="Center"
+                           VerticalOptions="Start"
+                           WidthRequest="30"/>
+                        <Label Text="{Binding Services.Bars}"  VerticalOptions="Center" HorizontalOptions="FillAndExpand" FontSize="Small"/>
+                    </StackLayout>
+                    
+                    <StackLayout Orientation="Horizontal" Padding="1">
+                        <Image Source="bus.png"                                                     
+                           HorizontalOptions="Center"
+                           VerticalOptions="Start"
+                           WidthRequest="30"/>
+                        <Label Text="{Binding Services.Coast}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" FontSize="Small"/>
+                    </StackLayout>
+                    
+                    <StackLayout Orientation="Horizontal" Padding="1">
+                        <Image Source="sport.png"                                                     
+                           HorizontalOptions="Center"
+                           VerticalOptions="Start"
+                           WidthRequest="30"/>
+                        <Label Text="{Binding Services.Sport}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" FontSize="Small"/>
+                    </StackLayout>
+                    
+                    <StackLayout Orientation="Horizontal" Padding="1">
+                        <Image Source="game.png"                                                     
+                           HorizontalOptions="Center"
+                           VerticalOptions="Start"
+                           WidthRequest="30"/>
+                        <Label Text="{Binding Services.ForChildren}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" FontSize="Small"/>
+                    </StackLayout>
+                    
+                    <StackLayout Orientation="Horizontal" Padding="1">
+                        <Image Source="paty.png"                                                     
+                           HorizontalOptions="Center"
+                           VerticalOptions="Start"
+                           WidthRequest="30"/>
+                        <Label Text="{Binding Services.AddServices}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" FontSize="Small"/>
+                    </StackLayout>
+                    
+                    <Label Text=" " FontSize="Large"/>
+                    <StackLayout Orientation="Horizontal" Padding="2">
+                        <Label Text="{local:Translate NumberofRooms} "                                                   
+                           HorizontalOptions="Start"
+                           VerticalOptions="Start"
+                               FontSize="Medium"
+                               TextColor="Black"/>
+                        <Label Text="{Binding NumberOfRooms}"
+                               TextColor="Black"
+                               HorizontalOptions="StartAndExpand" 
+                               VerticalOptions="Center"
+                               FontSize="Medium"/>
+                    </StackLayout>
+                    <Label Text=" " FontSize="Large"/>
+
+
+                    <StackLayout HorizontalOptions="CenterAndExpand"  Orientation="Horizontal" Padding="2">
+                        <Image Source="infa.png"                                                     
+                           HorizontalOptions="Start"
+                           VerticalOptions="Center"
+                           WidthRequest="30"/>
+                        <Label Text="Обзор"                       
+                               HorizontalOptions="StartAndExpand" 
+                               VerticalOptions="Center"
+                               FontSize="Large"
+                               TextColor="Black"/>                       
+                    </StackLayout>
+                    <Label Text="{Binding Information}" HorizontalOptions="FillAndExpand" FontSize="Small"/>
+                </StackLayout>
+            </ScrollView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

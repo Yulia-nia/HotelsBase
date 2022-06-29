@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="HotelsBase.Views.SortPage"
+             xmlns:local="clr-namespace:HotelsBase"
+             Title="{local:Translate HotelSort}"
+            >
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition  Width="*"/>
+                        <ColumnDefinition  Width="*"/>                        
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                    </Grid.RowDefinitions>
+
+
+
+                    <Button Grid.Column="0" Grid.Row="0" x:Name="SortByNumberOfStars" 
+                            
+                            Text="{local:Translate SortStars}"
+                            
+                        Clicked="SortByNumberOfStars_Clicked"
+                         HeightRequest="60" 
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"                         
+                        
+                        BorderColor="#71bcf7"
+                        BackgroundColor="#71bcf7"/>
+
+
+                    <Button Grid.Column="1" Grid.Row="0" Text="{local:Translate SortRoom}"
+                         Clicked="SortByNumberOfRooms_Clicked" 
+                         HeightRequest="60"
+                         HorizontalOptions="FillAndExpand" 
+                         VerticalOptions="FillAndExpand"
+                         BorderColor="#71bcf7"
+                            BackgroundColor="#71bcf7"
+                            />
+
+
+                    <Button Grid.Column="0" Grid.Row="1" Text="{local:Translate Popular}"
+                        Clicked="StartSortByPopular_Clicked"                     
+                        HeightRequest="60"
+                        HorizontalOptions="FillAndExpand" 
+                        VerticalOptions="FillAndExpand"
+                        BorderColor="#71bcf7"
+                        BackgroundColor="#71bcf7"/>
+
+                    <Button Grid.Column="1" Grid.Row="1" Text="{local:Translate Unpopular}"
+                        Clicked="EndSortByPopular_Clicked" 
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"                       
+                            HeightRequest="60"
+                        BorderColor="#71bcf7"
+                            BackgroundColor="#71bcf7"/>
+                </Grid>
+                
+                
+                <ListView x:Name="HotelsListView"
+                ItemsSource="{Binding Hotels}"
+                VerticalOptions="FillAndExpand"
+                HasUnevenRows="true"
+                RefreshCommand="{Binding LoadItemsCommand}"
+                IsPullToRefreshEnabled="true"
+                SelectedItem="{Binding SelectedFriend, Mode=TwoWay}"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                CachingStrategy="RecycleElement" 
+                Margin="10"
+                RefreshControlColor="#FEB860"
+                SeparatorColor="#FE6960">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.ContextActions>
+                                    <MenuItem Text="Вверх"
+                    Command="{Binding Path=ListViewModel.MoveToTopCommand1}" CommandParameter="{Binding}" />
+                                    <MenuItem Text="Вниз"
+                    Command="{Binding Path=ListViewModel.MoveToBottomCommand1}" CommandParameter="{Binding}" />
+                                    <MenuItem Text="Удалить"
+                    Command="{Binding Path=ListViewModel.RemoveCommand1}" CommandParameter="{Binding}" />
+                                </ViewCell.ContextActions>
+
+                                <ViewCell.View>
+                                    <StackLayout  Orientation="Vertical" >
+                                        <Image  Source="{Binding Foto}"  HeightRequest="250"
+                                        HorizontalOptions="FillAndExpand" Aspect="AspectFill">
+                                            <Image.GestureRecognizers>
+                                                <PinchGestureRecognizer/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        <StackLayout Padding="10">
+                                            <Label Text="{Binding Name}" FontSize="Large" TextColor="Black"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

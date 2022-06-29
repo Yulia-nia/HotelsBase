@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="HotelsBase.Views.HostelsViewPage"             
+             xmlns:local="clr-namespace:HotelsBase"
+             Title="{local:Translate Rental}"             
+             >
+
+    <ContentPage.Content>
+        <StackLayout x:Name="ReviewStack">
+            <Label Text=" " FontSize="Medium"/>
+
+            <Frame HeightRequest="120" BackgroundColor="#71bcf7" 
+                   BorderColor="#2196F3">
+                <Button Text="{local:Translate Add your offer}"
+                    FontSize="Medium" HeightRequest="60" 
+                    HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                    Clicked="CreateFriend"
+                    BackgroundColor="Transparent"
+                            BorderColor="#FE6960"/>
+            </Frame>
+            <ScrollView>
+                <ListView x:Name="MyListView"
+                          ItemsSource="{Binding Offers}" 
+                          VerticalOptions="FillAndExpand" 
+                          Margin="12"                  
+                          HasUnevenRows="true"     
+                          ItemSelected="OnItemSelected"
+                          SeparatorColor="#2196F3">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.ContextActions>
+                                    <MenuItem Text="Вверх"
+                                              Command="{Binding Path=ListViewModel.MoveToTopCommand}" CommandParameter="{Binding}" />
+                                    <MenuItem Text="Вниз"
+                                              Command="{Binding Path=ListViewModel.MoveToBottomCommand}" CommandParameter="{Binding}" />
+                                    <MenuItem Text="Удалить"
+                                              Command="{Binding Path=ListViewModel.RemoveCommand}" CommandParameter="{Binding}" />
+                                </ViewCell.ContextActions>
+                                <ViewCell.View>
+                                    <Grid Padding="12">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition  Width="40"/>
+                                            <ColumnDefinition  Width="40"/>
+                                            <ColumnDefinition  Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="150"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30"/>
+                                            <RowDefinition Height="30"/>
+                                            <RowDefinition Height="30"/>
+                                            <RowDefinition Height="200"/>                                            
+                                        </Grid.RowDefinitions>
+
+                                        <Label Text="{Binding FIO}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5"  
+                                               HorizontalOptions="StartAndExpand" VerticalOptions="Center"
+                                               TextColor="Black"
+                                               FontSize="Medium"/>
+
+                                        <Label Text="{Binding Number}" Grid.Column="4" Grid.Row="2" 
+                                               HorizontalOptions="StartAndExpand" VerticalOptions="Center"
+                                               TextColor="#71bcf7" FontSize="Medium"/>
+                                        
+                                        <Label Text="{Binding Street}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="5" 
+                                               HorizontalOptions="StartAndExpand" VerticalOptions="Center"
+                                               TextColor="Black" FontSize="Medium"/>
+
+                                        <Label Text="{local:Translate Coast}" Grid.Column="0" Grid.Row="2"
+                                               TextColor="Black" FontSize="Medium"
+                                               HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+                                        
+                                        <Label Text="{Binding Coast}" Grid.Column="1" Grid.Row="2" 
+                                               HorizontalOptions="Center" VerticalOptions="Center"
+                                               TextColor="Black" FontSize="Medium"/>
+                                        
+                                        <Label Text="BYN" Grid.Column="2" Grid.Row="2" 
+                                               TextColor="Black" FontSize="Medium"
+                                               HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+                                        
+                                        <Image  Source="{Binding Foto}" Grid.Column="0" Grid.Row="3"                                               
+                                                Aspect="AspectFill" Grid.ColumnSpan="5"/>
+
+                                    </Grid>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                </ScrollView>
+                <!--Custom View Cells-->
+                    <!--
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell>
+          <StackLayout>
+            <Label Text="{Binding Text}" 
+                   d:Text="{Binding .}"
+                   Style="{DynamicResource ListItemTextStyle}" />
+            <Label Text="{Binding Detail}" 
+                   d:Text="Detail"
+                   Style="{DynamicResource ListItemDetailTextStyle}"/>
+          </StackLayout>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+    -->
+                
+            
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="HotelsBase.Views.RoomDetailPage"
+             xmlns:local="clr-namespace:HotelsBase"
+             Title="{local:Translate Room}">
+    <ContentPage.Content>
+       
+            <StackLayout>
+            <Frame  HeightRequest="255" OutlineColor = "#71bcf7">
+                    <Image
+                    Source="{Binding Foto}"
+                    HorizontalOptions="FillAndExpand"/>
+            </Frame>                                  
+                <ScrollView>
+                    <StackLayout Padding="5">                        
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Label Text="{Binding Name}" 
+                           FontSize="28" 
+                           TextColor="Black"
+                           HorizontalOptions="Center" />
+                    </StackLayout>
+                    <Label Text="" FontSize="Small"/>
+                        
+                    <StackLayout Orientation="Horizontal" Padding="1">
+                        <Image Source="money.png"                                                     
+                           HorizontalOptions="Center"
+                           VerticalOptions="Start"
+                           WidthRequest="35"/>
+                        <Label Text="{local:Translate Coast1}" 
+                               FontSize="16" VerticalOptions="Center" HorizontalOptions="Start" TextColor="Black"/>
+                        <Label Text="{Binding Coast}" FontSize="16" 
+                               VerticalOptions="Center" TextColor="#71bcf7" HorizontalOptions="FillAndExpand"/>
+                    </StackLayout>
+                   
+                        
+                    <StackLayout Orientation="Horizontal" Padding="1">
+                        <Image Source="size.png"                                                     
+                           HorizontalOptions="Center"
+                           VerticalOptions="Start"
+                           WidthRequest="35"/>
+                        <Label Text="{local:Translate RoomSize}" VerticalOptions="Center" HorizontalOptions="Start"
+                               FontSize="16" TextColor="Black"/>
+                        <Label Text="{Binding Size}" 
+                               VerticalOptions="Center" TextColor="#71bcf7" HorizontalOptions="FillAndExpand"
+                               FontSize="16"/>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" Padding="1">
+                        <Image Source="bed.png"                                                     
+                           HorizontalOptions="Center"
+                           VerticalOptions="Start"
+                           WidthRequest="35"/>
+                        <Label Text="{local:Translate NumberBed}"
+                               FontSize="16" VerticalOptions="Center" HorizontalOptions="Start" TextColor="Black"/>
+                        <Label Text="{Binding NumbersOfBeds}" 
+                               FontSize="16" 
+                               VerticalOptions="Center" TextColor="#71bcf7" HorizontalOptions="FillAndExpand"/>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" Padding="1">
+                        <Image Source="nosmoke.png"                                                     
+                           HorizontalOptions="Center"
+                           VerticalOptions="Start"
+                           WidthRequest="35"/>
+                        <Label Text="{local:Translate Smoking}"
+                               FontSize="16" VerticalOptions="Center" HorizontalOptions="Start" TextColor="Black"/>
+                        <Label Text="{Binding Smoke}" 
+                               FontSize="16" 
+                               VerticalOptions="Center" TextColor="#71bcf7" HorizontalOptions="FillAndExpand"/>
+                    </StackLayout>
+
+
+                    <Label Text="" FontSize="Small"/>
+                    <StackLayout Orientation="Horizontal" Padding="1">
+                        <Image Source="inform.png"                                                     
+                           HorizontalOptions="Center"
+                           VerticalOptions="Start"
+                           WidthRequest="35"/>
+                        <Label Text="{Binding Information}" 
+                               FontSize="16" 
+                               VerticalOptions="StartAndExpand"
+                               HorizontalOptions="CenterAndExpand"   
+                               HorizontalTextAlignment="Center"
+                               TextColor="Black"/>
+                    </StackLayout>
+                            <!--VerticalOptions="Center" HorizontalOptions="FillAndExpand"-->
+                    <Label Text="" FontSize="Small"/>
+                    <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal" Padding="1">
+                        <Image Source="bathroom.png"                                                     
+                           HorizontalOptions="Start"
+                           VerticalOptions="Center"
+                           WidthRequest="40"/>
+                        <Label Text="{local:Translate Bathroom}" 
+                               HorizontalOptions="StartAndExpand" FontSize="23" TextColor="Black"/>
+                    </StackLayout>
+                        
+                    <StackLayout Padding="10">
+                        <Frame OutlineColor = "#71bcf7">
+                            <ScrollView>
+                                <ListView x:Name="BathroomServices" 
+                                  ItemsSource="{Binding BathroomServices}"
+                                  SelectionMode="None"
+                                  BackgroundColor="Transparent"
+                                  SeparatorVisibility="None"
+                                          IsEnabled="False"                                         
+                                  HeightRequest="150"
+                                  RowHeight="50"
+                                  Margin="5"/>
+                            </ScrollView>
+                        </Frame>
+                    </StackLayout>
+                    
+                    <Label Text=" " FontSize="Medium"/>
+
+                    <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal" Padding="1">
+                        <Image Source="add.png"                                                     
+                           HorizontalOptions="Start"
+                           VerticalOptions="Center"
+                           WidthRequest="40"/>
+                        <Label Text="{local:Translate Facilities}" 
+                           HorizontalOptions="StartAndExpand" FontSize="23" TextColor="Black"/>
+                    </StackLayout> <StackLayout Padding="10">
+                        <Frame OutlineColor = "#71bcf7" WidthRequest="200">
+                            <ScrollView>
+                                <ListView x:Name="Services" 
+                               SelectionMode="None"                                          
+                               BackgroundColor="Transparent"
+                               SeparatorVisibility="None"
+                               ItemsSource="{Binding Services}"                                         
+                               Margin="5"
+                               IsEnabled="False"
+                               RowHeight="50"
+                               HeightRequest="300"
+                                          />
+                            </ScrollView>
+                        </Frame>
+                    </StackLayout>                  
+
+
+                    <Label Text=" " FontSize="Small"/>                    
+
+                </StackLayout>  
+                 </ScrollView>
+            </StackLayout>
+      
+    </ContentPage.Content>
+</ContentPage>
